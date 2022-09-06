@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',  filename = 'css/style.css')}}">
+    <link href="https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900" rel="stylesheet" />
+   <link rel="stylesheet" href="{{url_for('static', filename='font/css/all.min.css')}}">
+   <link rel="stylesheet" href="{{url_for('static', filename='font/css/fontawesome.min.css')}}">
+   
+    <title>{{ title }}</title>
+</head>
+<body>
+        <header>
+            <div class="h-text">
+                <p>Our data centers</p>
+                <p>Our focus </p>
+                <p>Blog</p>
+            </div>
+
+            <div class="h-search">
+                <form  method="POST">
+                    <input type="text" name ='name' placeholder="add new city...">
+                    <button type="submit"></button>
+                </form>
+            </div>
+        </header>
+
+         <div class="main">
+            <div class="container-box">
+                        
+                        <h1>We Know The </h1> 
+                        <span>Future!</span>
+                
+                        <div class="container-text">
+                                <p>We are the weather forcast system.</p>
+                                <p>Our expert check the information with the most modern</p>
+                                <p> satelite equipent and powerful servers which gives you</p>
+                                <p> the most Accurate results.</p>
+
+                               
+                                    
+                        </div>
+                        
+                        <div class="container-bottom">
+                            <div class="btn-dark">
+                                <a href="#">
+                                    <i class="fa-solid fa-chart-pie"></i>
+                                    Next weeks weather
+                                </a>
+                            </div>
+
+                            <div class="btn-light">
+                                <a href="#">
+                                    More features
+                                </a>
+                            </div>
+                        </div>
+            </div>         
+
+
+            <div class="card-box">
+                        <!-- card -->
+                        <div class="card">
+                                <!-- card header -->
+                                <div class="card-head">
+                                    <div id="date">
+                                        <p><span><i class="fa-solid fa-calendar-days"></i></span> 30th September</p>
+                                    </div>        
+                                    <div id="location">
+                                        <p><span><i class="fa-solid fa-location-dot"></i></span> Newyork</p>
+                                    </div>
+                            </div>
+                            <!-- header-ends -->
+                            
+                            <!-- image -->
+                                <div class="img">
+                                    <img src="{{ url_for('static' , filename='img/cloudy.svg')}}" alt="">
+                                    <p>sunny</p>
+                                </div>
+                            <!-- end -->
+
+                            <div class="card-footer">
+                                <div class="line"></div>
+
+                                <div class="text-container">
+                                    <div class="text">
+                                        <p><span><i class="fa-brands fa-pagelines"></i></span> Precipitation</p>
+                                        <p>10%</p>
+                                    </div>
+                                    <div id="line-short"></div>
+
+                                    <div class="text">
+                                        <p><span><i class="fa-solid fa-droplet"></i></span> Humidity</p>
+                                        <p>18%</p>
+                                    </div>
+                                    <div id="line-short"></div>
+
+                                    <div class="text">
+                                        <p><span><i class="fa-solid fa-wind"></i></span> Wind</p>
+                                        <p>11km/h</p>
+                                    </div>
+                                    
+                                </div>
+                                    
+                            </div>
+                        </div>
+                        <!-- card-end-->
+                        <!-- card -->
+                        <div class="card">
+                            <!-- card header -->
+                            <div class="card-head">
+                                <div id="date">
+                                    <p><span><i class="fa-solid fa-calendar-days"></i></span> 30th September</p>
+                                </div>        
+                                <div id="location">
+                                    <p><span><i class="fa-solid fa-location-dot"></i></span> Newyork</p>
+                                </div>
+                        </div>
+                        <!-- header-ends -->
+                        
+                        <!-- image -->
+                            <div class="img">
+                                <img src="{{ url_for('static' , filename='img/cloudy.svg')}}" alt="">
+                                <p>sunny</p>
+                            </div>
+                        <!-- end -->
+
+                        <div class="card-footer">
+                            <div class="line"></div>
+
+                            <div class="text-container">
+                                <div class="text">
+                                    <p><span><i class="fa-brands fa-pagelines"></i></span> Precipitation</p>
+                                    <p>10%</p>
+                                </div>
+                                <div id="line-short"></div>
+
+                                <div class="text">
+                                    <p><span><i class="fa-solid fa-droplet"></i></span> Humidity</p>
+                                    <p>18%</p>
+                                </div>
+                                <div id="line-short"></div>
+
+                                <div class="text">
+                                    <p><span><i class="fa-solid fa-wind"></i></span> Wind</p>
+                                    <p>11km/h</p>
+                                </div>
+                                
+                            </div>
+                                
+                        </div>
+                    </div>
+                    <!-- card-end-->
+                    <!-- card -->
+                    <div class="card">
+                        <!-- card header -->
+                        <div class="card-head">
+                            <div id="date">
+                                <p><span><i class="fa-solid fa-calendar-days"></i></span> 30th September</p>
+                            </div>        
+                            <div id="location">
+                                <p><span><i class="fa-solid fa-location-dot"></i></span> Newyork</p>
+                            </div>
+                    </div>
+                    <!-- header-ends -->
+                    
+                    <!-- image -->
+                        <div class="img">
+                            <img src="{{ url_for('static' , filename='img/cloudy.svg')}}" alt="">
+                            <p>sunny</p>
+                        </div>
+                    <!-- end -->
+
+                    <div class="card-footer">
+                        <div class="line"></div>
+
+                        <div class="text-container">
+                            <div class="text">
+                                <p><span><i class="fa-brands fa-pagelines"></i></span> Precipitation</p>
+                                <p>10%</p>
+                            </div>
+                            <div id="line-short"></div>
+
+                            <div class="text">
+                                <p><span><i class="fa-solid fa-droplet"></i></span> Humidity</p>
+                                <p>18%</p>
+                            </div>
+                            <div id="line-short"></div>
+
+                            <div class="text">
+                                <p><span><i class="fa-solid fa-wind"></i></span> Wind</p>
+                                <p>11km/h</p>
+                            </div>
+                            
+                        </div>
+                            
+                    </div>
+                </div>
+                <!-- card-end-->
+                <!-- card -->
+                <div class="card">
+                    <!-- card header -->
+                    <div class="card-head">
+                        <div id="date">
+                            <p><span><i class="fa-solid fa-calendar-days"></i></span> 30th September</p>
+                        </div>        
+                        <div id="location">
+                            <p><span><i class="fa-solid fa-location-dot"></i></span> Newyork</p>
+                        </div>
+                </div>
+                <!-- header-ends -->
+                
+                <!-- image -->
+                    <div class="img">
+                        <img src="{{ url_for('static' , filename='img/cloudy.svg')}}" alt="">
+                        <p>sunny</p>
+                    </div>
+                <!-- end -->
+
+                <div class="card-footer">
+                    <div class="line"></div>
+
+                    <div class="text-container">
+                        <div class="text">
+                            <p><span><i class="fa-brands fa-pagelines"></i></span> Precipitation</p>
+                            <p>10%</p>
+                        </div>
+                        <div id="line-short"></div>
+
+                        <div class="text">
+                            <p><span><i class="fa-solid fa-droplet"></i></span> Humidity</p>
+                            <p>18%</p>
+                        </div>
+                        <div id="line-short"></div>
+
+                        <div class="text">
+                            <p><span><i class="fa-solid fa-wind"></i></span> Wind</p>
+                            <p>11km/h</p>
+                        </div>
+                        
+                    </div>
+                        
+                </div>
+            </div>
+            <!-- card-end-->
+            <!-- card -->
+            <div class="card">
+                <!-- card header -->
+                <div class="card-head">
+                    <div id="date">
+                        <p><span><i class="fa-solid fa-calendar-days"></i></span> 30th September</p>
+                    </div>        
+                    <div id="location">
+                        <p><span><i class="fa-solid fa-location-dot"></i></span> Newyork</p>
+                    </div>
+            </div>
+            <!-- header-ends -->
+            
+            <!-- image -->
+                <div class="img">
+                    <img src="{{ url_for('static' , filename='img/cloudy.svg')}}" alt="">
+                    <p>sunny</p>
+                </div>
+            <!-- end -->
+
+            <div class="card-footer">
+                <div class="line"></div>
+
+                <div class="text-container">
+                    <div class="text">
+                        <p><span><i class="fa-brands fa-pagelines"></i></span> Precipitation</p>
+                        <p>10%</p>
+                    </div>
+                    <div id="line-short"></div>
+
+                    <div class="text">
+                        <p><span><i class="fa-solid fa-droplet"></i></span> Humidity</p>
+                        <p>18%</p>
+                    </div>
+                    <div id="line-short"></div>
+
+                    <div class="text">
+                        <p><span><i class="fa-solid fa-wind"></i></span> Wind</p>
+                        <p>11km/h</p>
+                    </div>
+                    
+                </div>
+                    
+            </div>
+        </div>
+        <!-- card-end-->
+        <!-- card -->
+        <div class="card">
+            <!-- card header -->
+            <div class="card-head">
+                <div id="date">
+                    <p><span><i class="fa-solid fa-calendar-days"></i></span> 30th September</p>
+                </div>        
+                <div id="location">
+                    <p><span><i class="fa-solid fa-location-dot"></i></span> Newyork</p>
+                </div>
+        </div>
+        <!-- header-ends -->
+        
+        <!-- image -->
+            <div class="img">
+                <img src="{{ url_for('static' , filename='img/cloudy.svg')}}" alt="">
+                <p>sunny</p>
+            </div>
+        <!-- end -->
+
+        <div class="card-footer">
+            <div class="line"></div>
+
+            <div class="text-container">
+                <div class="text">
+                    <p><span><i class="fa-brands fa-pagelines"></i></span> Precipitation</p>
+                    <p>10%</p>
+                </div>
+                <div id="line-short"></div>
+
+                <div class="text">
+                    <p><span><i class="fa-solid fa-droplet"></i></span> Humidity</p>
+                    <p>18%</p>
+                </div>
+                <div id="line-short"></div>
+
+                <div class="text">
+                    <p><span><i class="fa-solid fa-wind"></i></span> Wind</p>
+                    <p>11km/h</p>
+                </div>
+                
+            </div>
+                
+        </div>
+    </div>
+    <!-- card-end-->
+                            
+                           
+                           
+                            
+
+                 </div>
+                        
+
+
+        
+        
+            </div>
+         </div>
+        <div class="container-gradient">
+            <img src="{{ url_for('static' , filename='img/bg-gradient.svg')}}" alt="gradient">
+        </div>
+
+</body>
+</html>
