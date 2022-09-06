@@ -11,15 +11,15 @@ To install all the packages, run:
 pip3 install -r requirements.txt
 
 ```
+
 create a .flaskenv and include:
 
-...
-
+```
 FLASK_APP=app.py
 FLASK_ENV=development
 FLASK_DEBUG=TRUE
 
-...
+```
 
 Then run:
 
