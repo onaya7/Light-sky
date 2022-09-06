@@ -1,6 +1,7 @@
-# Light_sky 
-    A website built with Flask and OpenWeather API that extract data from an open source weather API (OpenWeather API) and displays the weather forecast for any city. 
-    Designed and built with Python, HTML, and CSS. It is optimised for desktop and mobile view with responsive design.
+#   Weather App
+    A website built with Flask and OpenWeather API that extract data from an open source weather API (OpenWeather API) and displays 
+    the weather forecast for any city. Designed and built with Python, HTML, and CSS. It is optimised for desktop and 
+    mobile view with responsive design.
 
 
 ## How to run this application locally
