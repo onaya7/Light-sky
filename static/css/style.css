@@ -96,12 +96,22 @@ button{
 button:hover{
     opacity: 1;
 }
-
+.btn{
+    all: unset;
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+    background: url(../img/circle-xmark-solid.svg);
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    border-radius: 1rem;
+}
 .main{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2rem 2rem 2rem 10rem;
+    padding: 2rem 5rem 2rem 10rem;
     height: 100vh;
 }
 .container-box{
@@ -188,29 +198,38 @@ button:hover{
 
 
 .card-box{
-    background: #e6e6e6;
-   
-    height: 600px;
-    width: 500px;
+    /* background: #e6e6e6; */
     border-radius: 1rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit,  minmax(225px, auto) );
-    grid-gap: 1.5rem;
+    display: flex;
     align-items: center;
-    overflow: hidden;
+    justify-content: center;
+    position: relative;
+
 }
 
 
 .card{
-    background: transparent;
-    box-shadow: 6px 6px 14px 0 rgba(0, 0, 0, 0.2),
-  -8px -8px 18px 0 rgba(255, 255, 255, 0.55);
-    height: 160px;
-    padding: 1rem;
+    background: #45638842;
+    /* box-shadow: 6px 6px 14px 0 rgba(0, 0, 0, 0.2),
+  -8px -8px 18px 0 rgba(255, 255, 255, 0.55); */
+    height: 500px;
+    width: 350px;
+    padding: 1.2rem;
     border-radius: 1rem;
-    position: relative;
-    
+    position: absolute;
+    top: 0;
+    left: 10%;
+    transform: translate(-90%, -50%) scale(1);
+
 }
+/* .open-pop-up{
+    visibility: v;
+    top: 30%;
+    left: 10%;
+    transform: translate(-90%, -50%) scale(1);
+} */
+
+
 .card-head{
     display: flex;
     justify-content: space-between;
@@ -234,17 +253,19 @@ button:hover{
 
 
 .img{
-    height: 70px;
-    width: 70px;
+    height: 300px;
+    width: 300px;
     position: absolute;
-    top: 50%;
+    top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
+    text-align: center;
+    margin-top: 5rem;
 
 }
 img{
-    width: 100%;
-    height: 100%;
+    width: 50%;
+    height: 50%;
 }
 
 .img p{
@@ -253,13 +274,13 @@ img{
 }
 
 .line{
-    height: 1px;
+    height: 1.2px;
     background-color: var(--p-colour);
     border-radius: 1rem;
 }
 
 .card-footer{
-    margin-top: 7rem;
+    margin-top: 23rem;
 }
 
 .text-container{
@@ -273,7 +294,7 @@ img{
     margin:0.6rem 1rem;
 }
 .text p{
-    color: var(--light-black);
+    color: var(--bg-colour);
     font-size: 0.5rem;
 }
 #line-short{

@@ -63,31 +63,6 @@ def weather_api(city):
         r = requests.get(url).json()
         return r
 
-
-# app route
-@app.route("/")
-def get_data():
-
-    city = Cityname.query.all()
-    weather_list=[]
-
-    for city in city:
-        data = weather_api(city.name)
-        weather_data = {
-            'city': city.name,
-            'description':data['weather'][0]['description'],
-            'temperature':data['main']['temp'],
-            'icon':data['weather'][0]['icon'],
-            'humidity':data['main']['humidity'],
-            'wind':data['wind'],
-            'date':data['dt'],
-        }
-
-        weather_list.append(weather_data)
-    
-    return render_template('weather.html',  title='light-sky', weather=weather_list)
-
-
 # adding data route
 @app.route("/", methods=['POST'])
 def add_data():
@@ -119,6 +94,32 @@ def add_data():
                 print(ex_msg)
                 flash(ex_msg,'error' )
         return redirect(url_for('get_data'))
+        
+# app route
+@app.route("/")
+def get_data():
+
+    city = Cityname.query.all()
+    weather_list=[]
+
+    for city in city:
+        data = weather_api(city.name)
+        weather_data = {
+            'city': city.name,
+            'description':data['weather'][0]['description'],
+            'temperature':data['main']['temp'],
+            'icon':data['weather'][0]['icon'],
+            'humidity':data['main']['humidity'],
+            'wind':data['wind'],
+            'date':data['dt'],
+        }
+
+        weather_list.append(weather_data)
+    
+    return render_template('weather.html',  title='light-sky', weather=weather_list)
+
+
+
 
 
 
