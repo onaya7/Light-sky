@@ -1,6 +1,7 @@
 import os
 import requests
-from flask import Flask, request, render_template, url_for,redirect, flash
+from flask import Flask, request, render_template, url_for,redirect, flash, jsonify
+from datetime import date
 from flask_sqlalchemy import SQLAlchemy
 
 # directory path
@@ -63,60 +64,71 @@ def weather_api(city):
         r = requests.get(url).json()
         return r
 
-# adding data route
-@app.route("/", methods=['POST'])
-def add_data():
-        
-        new_city = request.form.get('name')
-       
-        # to check if the new city exist in the database 
-        if new_city:
-            existing_city = Cityname.query.filter_by(name=new_city).first()
-            
-            # if the new city doesnt exist
-            if not existing_city:
-                # sending a new city name from the form to the weather_api function
-                new_city_data = weather_api(new_city)
 
-                if new_city_data['cod'] == 200:
-                    new_city_obj = Cityname(name=new_city.lower())
-                    print(new_city_obj)
+@app.route('/process_data', methods= ['POST'])
+def process_data():
+    new_city = request.form['name']
+    today =date.today()
+    d2 =  today.strftime("%B %d,%Y")
 
-                    db.session.add(new_city_obj)
-                    db.session.commit()
-                else:
-                    err_msg= 'City does not exist in the world'
-                    print(err_msg)
-                    flash(err_msg,'error' )
+   
+    # to check if the new city exist in the database 
+    if new_city:
+        existing_city = Cityname.query.filter_by(name=new_city).first()
+        print(existing_city)
+    
+        # if the new city doesnt exist
+        if not existing_city:
+            # sending a new city name from the form to the weather_api function
+            new_city_data = weather_api(new_city)
+
+            if new_city_data['cod'] == 200:
+                new_city_obj = Cityname(name=new_city.lower())
+                print(new_city_obj.name)
+
+                db.session.add(new_city_obj)
+                db.session.commit()
             else:
-                # if the new city exist
-                ex_msg ='City already exist in the database'
-                print(ex_msg)
-                flash(ex_msg,'error' )
-        return redirect(url_for('get_data'))
+                err_msg= 'City does not exist in the world'
+                print(err_msg)
+                flash(err_msg,'error' )
+               
+        else:
+            # if the new city exist
+            ex_msg ='City already exist in the database'
+            print(ex_msg)
+            flash(ex_msg,'error' )
         
+     
+      
+       
+        city = Cityname.query.filter_by(name=new_city).first()
+        print(city)
+        print(d2)
+        data = weather_api(city.name)
+        weather_data = {
+                'city': city.name,
+                'description':data['weather'][0]['description'],
+                'temperature':data['main']['temp'],
+                'icon':data['weather'][0]['icon'],
+                'humidity':data['main']['humidity'],
+                'wind':data['wind']['speed'],
+                'date':d2,
+            }
+
+        
+        print(weather_data)
+
+    return jsonify({
+        'name' :weather_data
+        })
+
 # app route
 @app.route("/")
 def get_data():
 
-    city = Cityname.query.all()
-    weather_list=[]
-
-    for city in city:
-        data = weather_api(city.name)
-        weather_data = {
-            'city': city.name,
-            'description':data['weather'][0]['description'],
-            'temperature':data['main']['temp'],
-            'icon':data['weather'][0]['icon'],
-            'humidity':data['main']['humidity'],
-            'wind':data['wind'],
-            'date':data['dt'],
-        }
-
-        weather_list.append(weather_data)
     
-    return render_template('weather.html',  title='light-sky', weather=weather_list)
+    return render_template('weather.html',  title='light-sky',)
 
 
 
@@ -132,6 +144,22 @@ def delete(name):
     flash(f'succesfully deleted{city.name} succesfully')
     return redirect(url_for('get_data'))
 
+    # city = Cityname.query.filter_by(name=new_city).first()
+        # print(city)
+        # data = weather_api(city.name)
+        # # print(data)
+        # print(data['name'])
+        
+        # city = data['name']
+        # description = data['weather'][0]['description']
+        # temperature = data['main']['temp']
+        # icon = data['weather'][0]['icon']
+        # humidity = data['main']['humidity']
+        # wind = data['wind']['speed']
+        # date = data['dt']
+
+        # weather_list=[city, description, temperature, icon , humidity, wind, date]
+        # print(weather_list[0])
 
 if __name__ == "__main__":
     app.run(debug=True)

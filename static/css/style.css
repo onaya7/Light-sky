@@ -209,7 +209,7 @@ button:hover{
 
 
 .card{
-    background: #45638842;
+    background:#8b9ac447;
     /* box-shadow: 6px 6px 14px 0 rgba(0, 0, 0, 0.2),
   -8px -8px 18px 0 rgba(255, 255, 255, 0.55); */
     height: 500px;
@@ -243,6 +243,10 @@ button:hover{
     border-radius: 1rem;
     padding: 0.5rem 1rem;
 }
+
+#date  p span{
+    margin-right:0.3rem ;
+}
 #location{
     border: 1px solid  #292D32;
     color: var(--p-colour);
@@ -250,6 +254,9 @@ button:hover{
     padding: 0.5rem 1rem;
 }
 
+#location p span {
+    margin-right: 0.3rem;
+}
 
 
 .img{
