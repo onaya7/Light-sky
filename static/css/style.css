@@ -20,7 +20,6 @@
 
 body{
     position: relative;
-    height: 100vh;
     background-color: var(--bg-colour);
     font-family: var(--font-family)
 }
@@ -37,18 +36,20 @@ body{
     height: 100%;
 }
 header{
-    position: fixed;
    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 6.5rem 1rem 10rem ;
+    padding: 1rem 8.5rem 1rem 10rem ;
 }
-    
+.menu{
+    display: none;
+}
 .h-text{
     display: flex;
     align-items: center;
     width: 100%;
+    font-size: 0.8rem;
 }
 
 .h-text p{
@@ -59,6 +60,8 @@ header{
 
 .h-search{
     padding: 0.5rem;
+    width: 200px;
+    position: relative;
 }
 
 .h-search form{
@@ -69,13 +72,16 @@ header{
     border-radius: 1rem;
     background-color:  #e6e6e6 ;
     opacity: 0.5;
+    width: 100%;
 }
 input[type='text']{
-    height: 100%;
-    width: 100%;
-    all: unset;
-    font-size: 0.8rem;
-    padding: 3rem 10px;
+     width: 100%;
+     font-size: 0.8rem;
+     padding: 3rem 10px;
+     outline: none;
+     border: none;
+     border: n;
+     background-color: transparent;
 }
 
 ::placeholder{
@@ -90,8 +96,12 @@ button{
     background: url(../img/circle-plus-solid.svg);
     overflow: hidden;
     padding: 0;
-    margin: 0;
     border-radius: inherit;
+    background-repeat: no-repeat;
+    top: 0;
+    right: 0;
+    position: absolute;
+    transform: translate(-10px, 9px)
 }
 button:hover{
     opacity: 1;
@@ -111,11 +121,12 @@ button:hover{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2rem 5rem 2rem 10rem;
-    height: 100vh;
+    padding: 0rem 5rem 0rem 10rem;
+    width: 100%;
+   
 }
 .container-box{
-    width: 800px;
+    width: 400px;
     display: flex;
     flex-direction: column;
     
@@ -200,26 +211,23 @@ button:hover{
 .card-box{
     /* background: #e6e6e6; */
     border-radius: 1rem;
-    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: relative;
+    width: 400px;
+    
 
 }
 
 
 .card{
     background:#8b9ac447;
-    /* box-shadow: 6px 6px 14px 0 rgba(0, 0, 0, 0.2),
-  -8px -8px 18px 0 rgba(255, 255, 255, 0.55); */
-    height: 500px;
-    width: 350px;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    width: 100%;
     padding: 1.2rem;
     border-radius: 1rem;
-    position: absolute;
-    top: 0;
-    left: 10%;
-    transform: translate(-90%, -50%) scale(1);
+    position: relative;
+
 
 }
 /* .open-pop-up{
@@ -263,11 +271,10 @@ button:hover{
     height: 300px;
     width: 300px;
     position: absolute;
-    top: 35%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    margin-top: 5rem;
 
 }
 img{
@@ -308,4 +315,79 @@ img{
     height: 10px;
     background-color: var(--p-colour);
     width: 0.1rem;
+}
+
+
+/* large screen size : from 1140px to 1560px */
+@media (max-width:1098px){
+
+}
+/* small tablet to desktop screen : from 720px to 1140px */
+@media (max-width: 1100px) {
+    header{
+        padding: 1rem 5rem 1rem 2rem;
+    }
+    .main{
+        padding: 1rem 2rem;
+        gap: 10px;
+    }
+    .container-text{
+        
+    }
+    
+   
+    
+}
+/* small phone screen to small tablet : from 575px to 720 */
+@media (max-width:900px) {
+    body{
+        background: linear-gradient(180deg, #5F72BE 0%, rgba(89, 54, 227, 0.73) 100%);
+    }
+   
+    .container-gradient{
+        display: none;
+
+    }
+
+    .main{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        gap: 50px;
+       
+    }
+    .container-box{
+        width: 350px;
+         text-align: center;
+         display: flex;
+         align-items: center;
+     }
+    .container-bottom{
+        margin-top: 3rem;
+    }
+    .card-box{
+        width: 350px;
+        
+    }
+    .card-footer {
+        margin-top: 15rem;
+    }
+    
+}
+
+/* small phone screen : from 0 to 575px */
+@media (max-width: 575px) {
+    .menu{
+        display: block;
+    }
+    header{
+        padding: 1rem 5rem 1rem 2rem;
+    }
+    .h-text{
+        display: none;
+    }
+
+    
 }

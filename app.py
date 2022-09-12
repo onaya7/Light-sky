@@ -18,6 +18,7 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config['SECRET_KEY']='weatherapp'
 
+
 # instanciating sqlalchemy
 db = SQLAlchemy(app)
 
@@ -99,6 +100,7 @@ def process_data():
             print(ex_msg)
             flash(ex_msg,'error' )
         
+
      
       
        
@@ -130,36 +132,6 @@ def get_data():
     
     return render_template('weather.html',  title='light-sky',)
 
-
-
-
-
-
-# deleting data route 
-@app.route('/delete/<name>', methods=['POST', 'GET'])
-def delete(name):
-    city = Cityname.query.filter_by(name=name).first()
-    db.session.delete(city)
-    db.session.commit
-    flash(f'succesfully deleted{city.name} succesfully')
-    return redirect(url_for('get_data'))
-
-    # city = Cityname.query.filter_by(name=new_city).first()
-        # print(city)
-        # data = weather_api(city.name)
-        # # print(data)
-        # print(data['name'])
-        
-        # city = data['name']
-        # description = data['weather'][0]['description']
-        # temperature = data['main']['temp']
-        # icon = data['weather'][0]['icon']
-        # humidity = data['main']['humidity']
-        # wind = data['wind']['speed']
-        # date = data['dt']
-
-        # weather_list=[city, description, temperature, icon , humidity, wind, date]
-        # print(weather_list[0])
 
 if __name__ == "__main__":
     app.run(debug=True)
