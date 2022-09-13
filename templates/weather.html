@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{url_for('static',  filename = 'css/style.css')}}">
     <link href="https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900" rel="stylesheet" />
    <link rel="stylesheet" href="{{url_for('static', filename='font/css/all.min.css')}}">
+   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
    <link rel="stylesheet" href="{{url_for('static', filename='font/css/fontawesome.min.css')}}">
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
    <script src="{{  url_for('static' , filename= 'js/script.js')}}"></script>
@@ -27,7 +28,7 @@
         </header>
 
          <div class="main">
-            <div class="container-box">
+            <div class="container-box" data-aos="fade-in" data-aos-delay="100">
                         
                         <h1>We Know The </h1> 
                         <span>Future!</span>
@@ -41,7 +42,7 @@
                                     
                         </div>
                         
-                        <div class="container-bottom">
+                        <div class="container-bottom" data-aos="slide-left" data-aos-delay="200">
                             <div class="btn-dark">
                                 <a href="#">
                                     <i class="fa-solid fa-chart-pie"></i>
@@ -59,14 +60,14 @@
 
 
             <div class="card-box">
-                <div class="h-search">
+                <div class="h-search" data-aos="flip-down" data-aos-delay="50">
                     <form >
-                        <input type="text" id="nameInput" name ='name' placeholder="add new city...">
+                        <input type="text" id="nameInput" name ='name' placeholder="search city.....">
                         <button type="submit"></button>
                     </form>
                 </div>
                         <!-- card -->
-                        <div class="card" id="card"  style="display: none;">
+                        <div class="card" id="card"  style="display: none;" >
                                 <!-- card header -->
                                 <div class="card-head">
                                     <!-- date -->
@@ -124,6 +125,9 @@
         <div class="container-gradient">
             <img src="{{ url_for('static' , filename='img/bg-gradient.svg')}}" alt="gradient">
         </div>
-       
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+          AOS.init();
+        </script>
 </body>
 </html>
