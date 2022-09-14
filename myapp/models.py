@@ -4,7 +4,6 @@ from flask_sqlalchemy import SQLAlchemy
 # instanciating sqlalchemy
 db = SQLAlchemy()
 
-
 # database schema
 class Cityname(db.Model):
     id = db.Column(db.Integer, primary_key=True)
