@@ -17,8 +17,8 @@ def create_app():
     # )
 
     # heroku postgres database url
-    app.config["DATABASE_URL"]= 'postgres://jxclkxpxucbmke:331f8a9d1c4a176b275fbddb895a2a3bfdf0dab6f5b3330e59fcacf69d844c63@ec2-34-200-205-45.compute-1.amazonaws.com:5432/dqchr6iak6dvv'
-    
+    app.config["DATABASE_URL"]= 'postgres://rhwmtuzpfwvnju:68eb51398da2d9d157f138a664adb513e59c79ddacbb32438554a9591ba47e72@ec2-35-168-122-84.compute-1.amazonaws.com:5432/d504v2i08c75fl'
+
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     app.config['SECRET_KEY']='weatherapp'
 
