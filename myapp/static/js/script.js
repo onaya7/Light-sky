@@ -21,13 +21,13 @@ $(document).ready(function(){
             })
 
             .done(function(data){
-                    console.log(data.name.city)
-                    console.log(data.name.date)
-                    console.log(data.name.description)
-                    console.log(data.name.humidity)
+                    console.log(data)
+                    console.log(data.name)
+                    // console.log(data.name.date)
+                    // console.log(data.name.description)
+                    // console.log(data.name.humidity)
                    
                     if (data.name){
-                        $('#card').show();{
                             $( '#location').html(`<p><span><i class="fa-solid fa-location-dot"></i></span>${data.name.city}</p>`);
 
                             $('#date').html(`<p><span><i class="fa-solid fa-calendar-days"></i></span>
@@ -53,11 +53,34 @@ $(document).ready(function(){
                                 `   <p><span><i class="fa-solid fa-wind"></i></span> Wind</p>
                                 <p>${data.name.wind}km/h</p>`
                             );
-                        }
-                       
                     }
-                    else{
-                        $('#card').hide();
+                       
+
+                    if(data.error){
+                        $( '#location').html(`<p><span><i class="fa-solid fa-location-dot"></i></span>not found</p>`);
+
+                            $('#date').html(`<p><span><i class="fa-solid fa-calendar-days"></i></span>
+                            not found</p>`);
+
+
+                            $('#icon-img').html(
+                                ` <p>${data.error}</p>`
+                            );
+
+                            $('#temperature').html(
+                                `   <p><span><i class="fa-brands fa-pagelines"></i></span> Temperature</p>
+                                <p>not found</p>`
+                            );
+
+                            $('#humidity').html(
+                                `   <p><span><i class="fa-solid fa-droplet"></i></span> Humidity</p>
+                                <p>not found</p>`
+                            );
+
+                            $('#wind').html(
+                                `   <p><span><i class="fa-solid fa-wind"></i></span> Wind</p>
+                                <p>not found</p>`
+                            );
                     }
 
             });
