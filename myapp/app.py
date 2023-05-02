@@ -111,7 +111,7 @@ def get_data():
 # app route
 @view.route("/weather_info")
 def weather_info():
-
+    
     return render_template(
         "weather_info.html",
         title="Light sky | weather_info",
