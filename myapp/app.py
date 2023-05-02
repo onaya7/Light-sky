@@ -98,13 +98,7 @@ def process_data():
         return jsonify({"error": f"City '{new_city}' not found"}), 404
 
     return jsonify({"name":weather_data})
-    
-    
-    
-   
-                   
-
-
+ 
 # app route
 @view.route("/")
 def get_data():
