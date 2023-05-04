@@ -53,6 +53,12 @@ $(document).ready(function(){
                                 `   <p><span><i class="fa-solid fa-wind"></i></span> Wind</p>
                                 <p>${data.name.wind}km/h</p>`
                             );
+
+                            $('#time').html(
+                                `   <p><span><i class="fa-solid fa-clock"></i></span> Time</p>
+                                <p>${data.name.time}</p>`
+                            );
+                            
                     }
                        
 
@@ -64,7 +70,10 @@ $(document).ready(function(){
 
 
                             $('#icon-img').html(
-                                ` <p>${data.error}</p>`
+                                `<span>City "${data.error}" does not exist in this world</span> 
+                                <i class="fa-solid fa-face-frown"></i>
+                                `
+                                
                             );
 
                             $('#temperature').html(

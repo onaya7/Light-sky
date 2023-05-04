@@ -8,7 +8,7 @@ from flask import (
     request,
     url_for,
 )
-from datetime import date
+from datetime import datetime
 from myapp.models import Cityname, db
 
 view = Blueprint("view", __name__, static_folder="static", template_folder="templates")
@@ -48,7 +48,9 @@ def get_weather_data(city):
     if response.status_code == 404:
         return None
     data = response.json()
-    today_date = date.today().strftime("%B %d,%Y")
+    date = datetime.fromtimestamp(data['dt'])
+    weather_date = date.strftime('%A, %d %B %Y')
+    weather_time = date.strftime('%H:%M')
     
     weather_data = {
             "city": city,
@@ -57,7 +59,8 @@ def get_weather_data(city):
             "icon": data["weather"][0]["icon"],
             "humidity": data["main"]["humidity"],
             "wind": data["wind"]["speed"],
-            "date": today_date
+            "date": weather_date,
+            "time": weather_time
     }
     
     return weather_data
@@ -83,7 +86,7 @@ def process_data():
         if not weather_data:
             err_msg = f"City '{new_city}' does not exist in the world"
             flash(err_msg, "error")
-            return jsonify({"error": err_msg})
+            return jsonify({"error": new_city})
         city = Cityname(name=new_city.lower())
         db.session.add(city)
         db.session.commit()
@@ -111,7 +114,7 @@ def get_data():
 # app route
 @view.route("/weather_info")
 def weather_info():
-    
+
     return render_template(
         "weather_info.html",
         title="Light sky | weather_info",

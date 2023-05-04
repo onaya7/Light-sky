@@ -287,6 +287,15 @@ img{
     text-transform: capitalize;
 }
 
+.img span{
+    font-size: 1rem;
+    color: var(--bg-colour);
+}
+
+.img i{
+    color: orange;
+}
+
 .line{
     height: 1.2px;
     background-color: var(--p-colour);
