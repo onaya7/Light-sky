@@ -1,134 +1,94 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="{{url_for('static',  filename = 'img/favicon.ico')}}" type="image/x-icon">
-    <link rel="stylesheet" href="{{url_for('static',  filename = 'css/style.css')}}">
-    <link href="https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900" rel="stylesheet" />
-   <link rel="stylesheet" href="{{url_for('static', filename='font/css/all.min.css')}}">
-   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-   <link rel="stylesheet" href="{{url_for('static', filename='font/css/fontawesome.min.css')}}">
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-   <script src="{{  url_for('static' , filename= 'js/script.js')}}"></script>
-    <title>{{ title }}</title>
-</head>
-<body>
-        <header>
-            <div class="menu" id="menu">
-                <i class="fa-solid fa-bars"></i>
-            </div>
-            <div class="h-text">
-                <p>Our data centers</p>
-                <p>Our focus </p>
-                <p>Blog</p>
-            </div>
+{% extends 'base.html' %}
 
-           
-        </header>
+{% block content %}
+<div class="main">
+    <div class="container-box" data-aos="fade-in" data-aos-delay="100">
 
-         <div class="main">
-            <div class="container-box" data-aos="fade-in" data-aos-delay="100">
-                        
-                        <h1>We Know The </h1> 
-                        <span>Future!</span>
-                
-                        <div class="container-text">
-                                <p>We are the weather forcast system.</p>
-                                <p>Our expert check the information with the most modern satelite equipent and powerful servers which gives you</p>
-                                <p> the most Accurate results.</p>
+        <h1>We Know The </h1>
+        <span>Future!</span>
 
-                               
-                                    
-                        </div>
-                        
-                        <div class="container-bottom" data-aos="slide-left" data-aos-delay="200">
-                            <div class="btn-dark">
-                                <a href="#">
-                                    <i class="fa-solid fa-chart-pie"></i>
-                                    Next weeks weather
-                                </a>
-                            </div>
-
-                            <div class="btn-light">
-                                <a href="#">
-                                    More features
-                                </a>
-                            </div>
-                        </div>
-            </div>         
+        <div class="container-text">
+            <p>We are the weather forcast system.</p>
+            <p>Our expert check the information with the most modern satelite equipent and powerful servers which
+                gives you</p>
+            <p> the most Accurate results.</p>
 
 
-            <div class="card-box">
-                <div class="h-search" data-aos="flip-down" data-aos-delay="50">
-                    <form >
-                        <input type="text" id="nameInput" name ='name' placeholder="search city.....">
-                        <button type="submit"></button>
-                    </form>
-                </div>
-                        <!-- card -->
-                        <div class="card" id="card"  style="display: none;" >
-                                <!-- card header -->
-                                <div class="card-head">
-                                    <!-- date -->
-                                    <div id="date">
-                                        
-                                    </div>    
-                                    <!-- location     -->
-                                    <div id="location">
-                                        
-                                    </div>
-                            </div>
-                            <!-- header-ends -->
-                            
-                            <!-- image -->
-                                <div class="img" id="icon-img">
-                                   
-                                </div>
-                            <!-- end -->
 
-                            <div class="card-footer">
-                                <div class="line"></div>
-
-                                <div class="text-container">
-                                    <div class="text" id="temperature">
-                                       
-                                    </div>
-                                    <div id="line-short"></div>
-
-                                    <div class="text" id="humidity">
-                                        
-                                        
-                                    </div>
-                                    <div id="line-short"></div>
-
-                                    <div class="text" id="wind" >
-                                        
-                                        
-                                    </div>
-                                    
-                                </div>
-                                    
-                            </div>
-                        </div>
-                        <!-- card-end-->
-                        
-                            
-                           
-                           
-                            
-
-                 </div>
-        
-            </div>
-         </div>
-        <div class="container-gradient">
-            <img src="{{ url_for('static' , filename='img/bg-gradient.svg')}}" alt="gradient">
         </div>
-        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-        <script>
-          AOS.init();
-        </script>
-</body>
-</html>
+
+        <div class="container-bottom" data-aos="slide-left" data-aos-delay="200">
+            <div class="btn-dark">
+                <a href="{{ url_for('view.weather_info') }}">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    Next weeks weather
+                </a>
+            </div>
+
+            <div class="btn-light">
+                <a href="#">
+                    More features
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="card-box">
+        <div class="h-search" data-aos="flip-down" data-aos-delay="50">
+            <form>
+                <input type="text" id="nameInput" name='name' placeholder="search city.....">
+                <button type="submit"></button>
+            </form>
+        </div>
+        <!-- card -->
+        <div class="card" id="card" data-aos="slide-left" data-aos-delay="50">
+            <!-- card header -->
+            <div class="card-head">
+                <!-- date -->
+                <div id="date">
+
+                </div>
+                <!-- location     -->
+                <div id="location">
+
+                </div>
+            </div>
+            <!-- header-ends -->
+
+            <!-- image -->
+            <div class="img" id="icon-img">
+
+            </div>
+            <!-- end -->
+
+            <div class="card-footer">
+                <div class="line"></div>
+
+                <div class="text-container">
+                    <div class="text" id="temperature">
+                    </div>
+                    <div id="line-short"></div>
+
+                    <div class="text" id="humidity">
+                    </div>
+                    <div id="line-short"></div>
+
+                    <div class="text" id="wind">
+                    </div>
+
+                    <div id="line-short"></div>
+
+                    <div class="text" id="time">
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <!-- card-end-->
+
+    </div>
+
+</div>
+{% endblock%}
