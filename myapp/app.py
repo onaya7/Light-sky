@@ -1,9 +1,6 @@
-from datetime import date
-
 import requests
 from flask import (
     Blueprint,
-    Flask,
     flash,
     jsonify,
     redirect,
@@ -11,7 +8,7 @@ from flask import (
     request,
     url_for,
 )
-
+from datetime import datetime
 from myapp.models import Cityname, db
 
 view = Blueprint("view", __name__, static_folder="static", template_folder="templates")
@@ -43,61 +40,82 @@ api_response = {
     "cod": 200,
 }
 
+
 # creating a function that calls the weather app api
-def weather_api(city):
+def get_weather_data(city):
     url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&units=imperial&appid=b931795ebe22068736e68e74d4cbaa6b"
-    r = requests.get(url).json()
-    return r
-
-
-@view.route("/process_data", methods=["POST"])
-def process_data():
-    new_city = request.form["name"]
-    today = date.today()
-    d2 = today.strftime("%B %d,%Y")
-
-    # to check if the new city exist in the database
-    if new_city:
-        existing_city = Cityname.query.filter_by(name=new_city).first()
-
-        # if the new city doesnt exist
-        if not existing_city:
-            # sending a new city name from the form to the weather_api function
-            new_city_data = weather_api(new_city)
-
-            if new_city_data["cod"] == 200:
-                new_city_obj = Cityname(name=new_city.lower())
-
-                db.session.add(new_city_obj)
-                db.session.commit()
-            else:
-                err_msg = "City does not exist in the world"
-                flash(err_msg, "error")
-
-        else:
-            # if the new city exist
-            ex_msg = "City already exist in the database"
-            flash(ex_msg, "error")
-
-        city = Cityname.query.filter_by(name=new_city).first()
-        data = weather_api(city.name)
-        weather_data = {
-            "city": city.name,
+    response = requests.get(url)
+    if response.status_code == 404:
+        return None
+    data = response.json()
+    date = datetime.fromtimestamp(data['dt'])
+    weather_date = date.strftime('%A, %d %B %Y')
+    weather_time = date.strftime('%H:%M')
+    
+    weather_data = {
+            "city": city,
             "description": data["weather"][0]["description"],
             "temperature": data["main"]["temp"],
             "icon": data["weather"][0]["icon"],
             "humidity": data["main"]["humidity"],
             "wind": data["wind"]["speed"],
-            "date": d2,
-        }
-    return jsonify({"name": weather_data})
+            "date": weather_date,
+            "time": weather_time
+    }
+    
+    return weather_data
+    
 
 
+@view.route("/process_data", methods=["POST"])
+
+def process_data():
+    
+    new_city = request.form["name"]
+    
+    
+    if not new_city:
+        return jsonify({"error": "Please enter a city name"})
+    
+     # Check if the new city exists in the database
+    city = Cityname.query.filter_by(name=new_city.lower()).first()
+    
+    # If the new city doesn't exist in the database, fetch its data from the API and add it to the database
+    if not city:
+        weather_data = get_weather_data(new_city)
+        if not weather_data:
+            err_msg = f"City '{new_city}' does not exist in the world"
+            flash(err_msg, "error")
+            return jsonify({"error": err_msg})
+        city = Cityname(name=new_city.lower())
+        db.session.add(city)
+        db.session.commit()
+
+    # If the new city already exists in the database, use its data from the database
+    else:
+        ex_msg = f"City '{new_city}' already exists in the database"
+        flash(ex_msg, "error")
+        weather_data = get_weather_data(city.name)
+
+    if not weather_data:
+        return jsonify({"error": f"City '{new_city}' not found"}), 404
+
+    return jsonify({"name":weather_data})
+ 
 # app route
 @view.route("/")
 def get_data():
 
     return render_template(
         "weather.html",
-        title="light-sky",
+        title="Light sky",
+    )
+    
+# app route
+@view.route("/weather_info")
+def weather_info():
+
+    return render_template(
+        "weather_info.html",
+        title="Light sky | weather_info",
     )
