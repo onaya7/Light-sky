@@ -70,7 +70,7 @@ $(document).ready(function(){
 
 
                             $('#icon-img').html(
-                                `<span>City "${data.error}" does not exist in this world</span> 
+                                `<span>${data.error}</span> 
                                 <i class="fa-solid fa-face-frown"></i>
                                 `
                                 
@@ -90,6 +90,12 @@ $(document).ready(function(){
                                 `   <p><span><i class="fa-solid fa-wind"></i></span> Wind</p>
                                 <p>not found</p>`
                             );
+
+                            $('#time').html(
+                                `   <p><span><i class="fa-solid fa-clock"></i></span> Time</p>
+                                <p>not found</p>`
+                            );
+                            
                     }
 
             });

@@ -86,7 +86,7 @@ def process_data():
         if not weather_data:
             err_msg = f"City '{new_city}' does not exist in the world"
             flash(err_msg, "error")
-            return jsonify({"error": new_city})
+            return jsonify({"error": err_msg})
         city = Cityname(name=new_city.lower())
         db.session.add(city)
         db.session.commit()

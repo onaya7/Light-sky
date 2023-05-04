@@ -20,7 +20,7 @@
 
 body{
     position: relative;
-    background-color: var(--bg-colour);
+    background-color: #7f7b7b;
     font-family: var(--font-family)
 }
 .container-gradient{
@@ -293,7 +293,7 @@ img{
 }
 
 .img i{
-    color: orange;
+    color: var(--bg-colour);
 }
 
 .line{
@@ -310,14 +310,15 @@ img{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;    
+    align-items: center;  
+    gap: 2px;  
 
 }
 .text{
-    margin:0.6rem 1rem;
+    margin:0.6rem 0.5rem;
 }
 .text p{
-    color: var(--bg-colour);
+    color:var(--bg-colour);
     font-size: 0.6rem;
     font-weight: 600;
     line-height: 1.5;
@@ -326,6 +327,22 @@ img{
     height: 10px;
     background-color: var(--p-colour);
     width: 0.1rem;
+}
+
+.coming-soon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 250px auto 250px auto;
+    color: var(--bg-colour);
+    
+}
+
+.coming-soon p{
+    font-size: 2rem;
+    text-transform: capitalize;
+    font-family: Arial;
+  
 }
 
 
@@ -346,9 +363,9 @@ img{
 }
 /* small phone screen to small tablet : from 575px to 900px*/
 @media (max-width:900px) {
-    body{
+    /* body{
         background: linear-gradient(180deg, #5F72BE 0%, rgba(89, 54, 227, 0.73) 100%);
-    }
+    } */
    
     .container-gradient{
         display: none;
@@ -379,6 +396,7 @@ img{
     
 }
 
+
 /* small phone screen : from 0 to 575px */
 @media (max-width: 575px) {
     
@@ -392,6 +410,14 @@ img{
     .card-box{
         width: 350px;
         
+    }
+
+    .text p{
+        font-size: 0.5rem;
+    }
+    .coming-soon{
+        margin: 250px 20px 250px 20px;
+        font-size: 1rem;
     }
 }
 
